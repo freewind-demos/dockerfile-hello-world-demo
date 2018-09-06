@@ -35,12 +35,5 @@ docker run -p 8080:80 my-hello-world-docker
 
 在Ubuntu下，宿主机就是Ubuntu自己，所以访问`curl http://localhost:8080`，就能得到回复`<h1>Hello, Docker!</h1>`。
 
-而在Mac中，宿主机是docker-machine创建的虚拟机。如果当前使用的是`default`虚拟机，我们需要先运行`docker-machine env default`，得到的结果如：
-
-```
-set -gx DOCKER_TLS_VERIFY "1";
-set -gx DOCKER_HOST "tcp://192.168.99.100:2376";
-...
-```
-
-其中的`192.168.99.100`就是宿主机的ip地址。我们访问`curl http://192.168.99.100:8080`，也能得到正确的回复`<h1>Hello, Docker!</h1>`
+而在Mac中，宿主机是docker-machine创建的虚拟机。如果当前使用的是`default`虚拟机，我们需要先运行`docker-machine ip`得到的其ip（此处为`192.168.99.100`），
+然后访问`curl http://192.168.99.100:8080`，也能得到正确的回复`<h1>Hello, Docker!</h1>`
