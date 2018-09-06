@@ -31,9 +31,9 @@ Successfully tagged my-hello-world-docker:latest
 docker run -p 8080:80 my-hello-world-docker
 ```
 
-其中`-p 8080:80`意思是，把`my-hello-world-docker`这个image启动之后的container的`8080`端口（即nginx的端口），映射到宿主机的`80`端口上。
+其中`-p 8080:80`意思是，把宿主机的`8080`端口映射到`my-hello-world-docker` container的`80`端口（即nginx的端口）。
 
-在Ubuntu下，宿主机就是Ubuntu自己，所以访问`curl http://localhost:80`，就能得到回复`<h1>Hello, Docker!</h1>`。
+在Ubuntu下，宿主机就是Ubuntu自己，所以访问`curl http://localhost:8080`，就能得到回复`<h1>Hello, Docker!</h1>`。
 
 而在Mac中，宿主机是docker-machine创建的虚拟机。如果当前使用的是`default`虚拟机，我们需要先运行`docker-machine env default`，得到的结果如：
 
@@ -43,4 +43,4 @@ set -gx DOCKER_HOST "tcp://192.168.99.100:2376";
 ...
 ```
 
-其中的`192.168.99.100`就是宿主机的ip地址。我们访问`curl http://192.168.99.100:80`，也能得到正确的回复`<h1>Hello, Docker!</h1>`
+其中的`192.168.99.100`就是宿主机的ip地址。我们访问`curl http://192.168.99.100:8080`，也能得到正确的回复`<h1>Hello, Docker!</h1>`
