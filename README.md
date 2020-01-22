@@ -7,6 +7,23 @@ Dockerfile Hello World Demo
 docker build -t my-hello-world-docker .
 ```
 
+其中`-t`是`tag`的意思，表示将当前目录`.`中的Dockerfile build之后，给生成的image打个tag，
+名为`my-hello-world-docker`，方便后面run的时候指定它。
+
+不加`-t`也可以:
+
+```
+docker build .
+```
+
+但这样的话，我们就需要仔细看它的输出，它在最后会有如这样的信息：
+
+```
+Successfully built d0957ffdf8a2
+```
+
+我们在后面run的时候，就要写成`docker run d0957ffdf8a2`
+
 由于我们例子中使用了`nginx`这个基础image，所以会先下载nginx image，在国内的话，时间可能会有点久。
 
 如果已经下载过，则输出是这样的：
